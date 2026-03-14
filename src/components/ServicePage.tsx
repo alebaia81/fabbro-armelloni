@@ -170,6 +170,28 @@ export default function ServicePage({ city }: { city: string }) {
           </div>
         </section>
 
+        {/* Mappa */}
+        <section className="py-16 bg-white px-4 sm:px-6 lg:px-8 border-t border-gray-100">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Dove Trovarci</h2>
+            <div className="w-full h-[450px] rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2816.634674175787!2d9.8436528766861!3d45.09325785882415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4780df83796677f3%3A0x6bba3bc7a6af5143!2sVia%20Rotta%2C%2010%2C%2029012%20Caorso%20PC!5e0!3m2!1sit!2sit!4v1741973000000!5m2!1sit!2sit"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Posizione Fabbro Armelloni"
+              ></iframe>
+            </div>
+            <p className="mt-6 text-gray-600">
+              Via Rotta, 10, 29012 Caorso (PC)
+            </p>
+          </div>
+        </section>
+
         <ContactForm />
 
         {/* Generico contenuto SEO per la città */}
