@@ -52,7 +52,7 @@ export default function AboutSection({ city }: { city: string }) {
           <div className="lg:w-1/2 relative">
             <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1590483257805-ea57a44f5195?q=80&w=1200&auto=format&fit=crop" 
+                src="/images/fabbro-piacenza-lavorazione-ferro-01.webp" 
                 alt="Fabbro al lavoro" 
                 className="w-full h-full object-cover"
               />
