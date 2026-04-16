@@ -9,30 +9,15 @@ export default function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitting");
     const formData = new FormData(e.currentTarget);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+    const name = formData.get("name")?.toString() || "";
+    const message = formData.get("message")?.toString() || "";
 
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: json
-      });
-      const result = await response.json();
-      if (result.success) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
-    } catch (error) {
-      console.error(error);
-      setStatus("error");
-    }
+    const text = `Ciao Andrea! Sono ${name}. Ti contatto dal sito per: ${message}.`;
+    const whatsappUrl = `https://wa.me/393478899094?text=${encodeURIComponent(text)}`;
+    
+    window.open(whatsappUrl, "_blank");
+    setStatus("success");
   }
 
   return (
@@ -40,8 +25,8 @@ export default function ContactForm() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Richiedi un Preventivo o Assistenza</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Compila il modulo sottostante per descrivermi il tuo problema. Ti risponderò il prima possibile. Per emergenze, utilizza il numero di telefono.
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+            Compila il modulo sottostante per inviare un messaggio WhatsApp diretto ad Andrea. Riceverai risposta immediata per emergenze o preventivi.
           </p>
         </div>
 
@@ -86,8 +71,8 @@ export default function ContactForm() {
                     <CheckCircle2 className="w-10 h-10 text-green-600" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">Messaggio Inviato!</h3>
-                  <p className="text-gray-600 max-w-sm">
-                    Grazie per avermi contattato. Ho ricevuto la tua richiesta e ti risponderò il prima possibile.
+                  <p className="text-gray-700 max-w-sm">
+                    Grazie! La tua richiesta è stata preparata. Se non si è aperta automaticamente l'app di WhatsApp, puoi contattarmi direttamente al numero sopra indicato.
                   </p>
                   <button 
                     onClick={() => setStatus("idle")}
@@ -98,16 +83,9 @@ export default function ContactForm() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Web3Forms Access Key */}
-                  <input type="hidden" name="access_key" value={accessKey} />
-                  {/* Soggetto predefinito (opzionale) */}
-                  <input type="hidden" name="subject" value="Nuova richiesta dal sito web Fabbro" />
-                  {/* Honeypot per Spam (opzionale raccomandato da web3forms) */}
-                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium text-gray-700 block">
+                      <label htmlFor="name" className="text-sm font-bold text-gray-800 block">
                         Nome e Cognome
                       </label>
                       <input
@@ -115,41 +93,14 @@ export default function ContactForm() {
                         name="name"
                         id="name"
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition bg-gray-50 focus:bg-white"
-                        placeholder="Mario Rossi"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="phone" className="text-sm font-medium text-gray-700 block">
-                        Telefono
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        id="phone"
-                        required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition bg-gray-50 focus:bg-white"
-                        placeholder="+39 347 889 9094"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition bg-white text-gray-900 placeholder:text-gray-500"
+                        placeholder="Es: Mario Rossi"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-gray-700 block">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition bg-gray-50 focus:bg-white"
-                      placeholder="mario.rossi@email.com"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-gray-700 block">
+                    <label htmlFor="message" className="text-sm font-bold text-gray-800 block">
                       Come posso aiutarti?
                     </label>
                     <textarea
@@ -157,8 +108,8 @@ export default function ContactForm() {
                       id="message"
                       rows={4}
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition bg-gray-50 focus:bg-white resize-none"
-                      placeholder="Descrivi brevemente il problema (es. chiave spezzata, porta bloccata, preventivo inferriate...)"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition bg-white text-gray-900 placeholder:text-gray-500 resize-none"
+                      placeholder="Descrivi qui il problema (es. porta bloccata, preventivo serratura...)"
                     ></textarea>
                   </div>
 
@@ -171,16 +122,12 @@ export default function ContactForm() {
 
                   <button
                     type="submit"
-                    disabled={status === "submitting"}
-                    className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-gray-900 text-white font-bold text-lg hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 transition-all shadow-lg active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-xl bg-[#25D366] text-white font-bold text-lg hover:bg-[#128C7E] focus:ring-4 focus:ring-green-300 transition-all shadow-lg active:scale-[0.98]"
                   >
-                    {status === "submitting" ? (
-                      "Invio in corso..."
-                    ) : (
-                      <>
-                        Invia Richiesta <Send className="w-5 h-5" />
-                      </>
-                    )}
+                    Invia su WhatsApp
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
                   </button>
                   <p className="text-xs text-center text-gray-500 mt-4">
                     Inviando il modulo, accetti il trattamento dei dati personali ai fini del ricontatto.

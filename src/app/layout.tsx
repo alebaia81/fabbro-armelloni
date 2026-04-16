@@ -43,7 +43,7 @@ export default function RootLayout({
 
         {/* Global Desktop & Mobile Sticky WhatsApp Button */}
         <a
-          href="https://wa.me/393478899094?text=Grazie%20per%20averci%20contattato!%20Risponderemo%20a%20breve!"
+          href="https://wa.me/393478899094?text=Ciao%20Andrea!%20Ti%20contatto%20dal%20sito%20web.%20Avrei%20bisogno%20di%20assistenza%20per:%20"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-24 right-4 md:bottom-6 md:right-6 bg-[#25D366] text-white p-3 rounded-full shadow-2xl hover:bg-[#20b858] hover:scale-110 transition-all duration-300 z-[9999] flex items-center justify-center animate-bounce group"
