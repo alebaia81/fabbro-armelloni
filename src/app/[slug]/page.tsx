@@ -3,21 +3,19 @@ import { notFound } from "next/navigation";
 import { cities } from "@/lib/cities";
 import ServicePage from "@/components/ServicePage";
 
-// 1. Generate Static Params for Ultra-Fast Loading (Static Generation)
+// 1. Generate Static Params: restituisce il fullSlug (es. fabbro-caorso)
 export async function generateStaticParams() {
   return cities.map((city) => ({
-    slug: city.slug,
+    slug: city.fullSlug,
   }));
 }
 
-// 2. Generate Dynamic Metadata (SEO GEO-LOCALIZZATA)
+// 2. Generate Metadata
 export async function generateMetadata(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  { params }: any
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-  // await params is needed in Next.js 15
   const resolvedParams = await params;
-  const cityData = cities.find((c) => c.slug === resolvedParams.slug);
+  const cityData = cities.find((c) => c.fullSlug === resolvedParams.slug);
   
   if (!cityData) {
     return { title: 'Not Found' };
@@ -37,11 +35,10 @@ export async function generateMetadata(
 
 // 3. Page Component
 export default async function FabbroCityPage(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  { params }: any
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   const resolvedParams = await params;
-  const cityData = cities.find((c) => c.slug === resolvedParams.slug);
+  const cityData = cities.find((c) => c.fullSlug === resolvedParams.slug);
 
   if (!cityData) {
     notFound();

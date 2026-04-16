@@ -28,7 +28,7 @@ export default function GallerySection() {
     <section className="bg-white px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">I Nostri Lavori</h1>
+          <h2 className="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">I Nostri Lavori</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Guarda alcune delle nostre realizzazioni e interventi sul campo. Qualità e precisione in ogni dettaglio.
           </p>

@@ -7,14 +7,22 @@ export default function ServicePage({ city }: { city: string }) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": `Fabbro Urgente ${city}`,
-    "image": "https://example.com/logo.png",
+    "image": "/logo.png",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": city,
+      "streetAddress": "Via Rotta, 10",
+      "addressLocality": "Caorso",
+      "postalCode": "29012",
       "addressRegion": "PC",
       "addressCountry": "IT"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.0487,
+      "longitude": 9.8455
+    },
     "telephone": "+393478899094",
+    "priceRange": "€€",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",

@@ -2,7 +2,8 @@ import { MetadataRoute } from 'next';
 import { cities } from '@/lib/cities';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.fabbropiacenza-esempio.it'; // Sostituire con il vero dominio
+  // Variabile baseUrl: modificare qui al momento del deployment definitivo
+  const baseUrl = 'https://fabbroarmelloni-placeholder.it';
 
   // Definisci la Home Page e le pagine statiche fisse
   const routes: MetadataRoute.Sitemap = [
