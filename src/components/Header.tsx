@@ -27,7 +27,7 @@ export default function Header() {
           </div>
         </Link>
         
-        <nav className="hidden md:flex items-center gap-6 font-medium text-gray-700">
+        <nav className="hidden lg:flex items-center gap-6 font-medium text-gray-700">
           <Link href="/#chi-siamo" className="hover:text-green-600 transition-colors">Chi Siamo</Link>
           <Link href="/#servizi" className="hover:text-green-600 transition-colors">Servizi</Link>
           <Link href="/i-nostri-lavori" className="hover:text-green-600 transition-colors">I Nostri Lavori</Link>
@@ -35,18 +35,20 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
-          <div className="hidden md:block text-right">
-            <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Pronto Intervento</p>
-            <a href="tel:+393478899094" className="text-lg font-bold text-gray-900 hover:text-green-600 transition">
-              +39 347 889 9094
+          <div className="hidden md:block">
+            <a href="tel:+393478899094" className="flex items-center gap-2 px-5 py-2.5 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition shadow-md whitespace-nowrap">
+              <Phone className="w-5 h-5" />
+              Pronto Intervento
             </a>
           </div>
-          <a href="tel:+393478899094" className="flex items-center justify-center p-2.5 rounded-full bg-green-100 text-green-600 hover:bg-green-600 hover:text-white transition shadow-sm md:shadow-none">
-            <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
-          </a>
+          <div className="md:hidden">
+            <a href="tel:+393478899094" className="flex items-center justify-center p-2.5 rounded-full bg-green-100 text-green-600 hover:bg-green-600 hover:text-white transition shadow-sm">
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
+            </a>
+          </div>
           <button 
             type="button"
-            className="md:hidden flex items-center justify-center p-2 rounded bg-gray-50 text-gray-700 hover:bg-gray-100 transition"
+            className="lg:hidden flex items-center justify-center p-2 rounded bg-gray-50 text-gray-700 hover:bg-gray-100 transition"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >
@@ -57,7 +59,7 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-md">
+        <div className="lg:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-md">
           <nav className="flex flex-col p-4 gap-2 font-medium text-gray-700">
             <Link 
               href="/#chi-siamo" 

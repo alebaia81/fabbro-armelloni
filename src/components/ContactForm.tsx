@@ -11,9 +11,10 @@ export default function ContactForm() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name")?.toString() || "";
+    const email = formData.get("email")?.toString() || "";
     const message = formData.get("message")?.toString() || "";
 
-    const text = `Ciao Andrea! Sono ${name}. Ti contatto dal sito per: ${message}.`;
+    const text = `Ciao Andrea! Sono ${name} (Email: ${email}). Ti contatto dal sito per: ${message}.`;
     const whatsappUrl = `https://wa.me/393478899094?text=${encodeURIComponent(text)}`;
     
     window.open(whatsappUrl, "_blank");
@@ -49,8 +50,10 @@ export default function ContactForm() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400 font-medium uppercase tracking-wider">Emergenze</p>
-                      <a href="tel:+393478899094" className="text-lg font-bold hover:text-[#FFD700] transition-colors">+39 347 889 9094</a>
+                      <p className="text-sm text-gray-400 font-medium uppercase tracking-wider mb-2">Pronto Intervento H24</p>
+                      <a href="tel:+393478899094" className="inline-flex items-center justify-center px-4 py-2 bg-[#FFD700] text-gray-900 text-sm font-bold rounded-lg hover:bg-yellow-400 transition shadow-sm">
+                        Chiama per Emergenza
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -83,7 +86,7 @@ export default function ContactForm() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-bold text-gray-800 block">
                         Nome e Cognome
@@ -95,6 +98,19 @@ export default function ContactForm() {
                         required
                         className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition bg-white text-gray-900 placeholder:text-gray-500"
                         placeholder="Es: Mario Rossi"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-bold text-gray-800 block">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        required
+                        className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition bg-white text-gray-900 placeholder:text-gray-500"
+                        placeholder="Es: unamail@gmail.com"
                       />
                     </div>
                   </div>
