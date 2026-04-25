@@ -1,0 +1,203 @@
+# ============================================================
+#  FABBRO ARMELLONI — AUDIT COMPLIANCE LEGALE
+# ============================================================
+#
+#  Data audit: 25 Aprile 2026
+#  Normative di riferimento:
+#    - GDPR (Reg. UE 2016/679)
+#    - Direttiva ePrivacy 2009/136/CE
+#    - Provvedimento Garante Privacy 10 giugno 2021 (Cookie)
+#    - D.Lgs. 196/2003 (Codice Privacy italiano)
+#    - Art. 2250 c.c. + Art. 35 DPR 633/72 (Trasparenza aziendale)
+#    - Legge 4/2004 "Legge Stanca" (Accessibilità)
+#    - Linee Guida AGID Accessibilità 2022
+#
+# ============================================================
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 1. PRIVACY POLICY (GDPR art. 13)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+#  STATO: ✅ CONFORME
+#
+#  Elementi presenti:
+#    ✅ Titolare del trattamento (nome, sede, P.IVA, C.F., PEC)
+#    ✅ Tipologie di dati raccolti (contatto, navigazione, cookie)
+#    ✅ Finalità e base giuridica (tabella con art. 6 GDPR)
+#    ✅ Tempi di conservazione per ogni finalità
+#    ✅ Comunicazione a terze parti (hosting, Google)
+#    ✅ Diritti dell'interessato (artt. 15-22 GDPR)
+#    ✅ Diritto di reclamo al Garante Privacy
+#    ✅ Contatto per esercizio diritti (PEC)
+#    ✅ Link alla Cookie Policy
+#    ✅ Data di aggiornamento
+#
+#  File: src/app/privacy-policy/page.tsx
+#  URL: /privacy-policy
+#  Indicizzazione: robots noindex, nofollow (corretto)
+#
+#  Note:
+#    ⚠️ L'URL del sito nella Privacy Policy punta a
+#       "www.fabbroarmelloni.com" — da aggiornare con dominio definitivo.
+#
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 2. COOKIE POLICY (Direttiva ePrivacy + Garante 2021)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+#  STATO: ✅ CONFORME
+#
+#  Elementi presenti:
+#    ✅ Spiegazione di cosa sono i cookie
+#    ✅ Tabella cookie tecnici (nome, provenienza, scopo, durata)
+#    ✅ Cookie di terze parti — Google Maps (con link policy Google)
+#    ✅ Cookie analitici (predisposto per Google Analytics)
+#    ✅ Come gestire/disabilitare i cookie
+#    ✅ Link istruzioni browser (Chrome, Firefox, Safari, Edge)
+#    ✅ Opt-out Google Analytics
+#    ✅ Contatti del titolare
+#
+#  File: src/app/cookie-policy/page.tsx
+#  URL: /cookie-policy
+#  Indicizzazione: robots noindex, nofollow (corretto)
+#
+#  Note:
+#    ⚠️ L'URL del sito nella Cookie Policy punta a
+#       "www.fabbroarmelloni.com" — da aggiornare con dominio definitivo.
+#
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 3. COOKIE BANNER (Provvedimento Garante 10/06/2021)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+#  STATO: ⚠️ PARZIALMENTE CONFORME — RICHIEDE INTERVENTO
+#
+#  Elementi presenti:
+#    ✅ Banner visibile al primo accesso
+#    ✅ Pulsante "Accetta Tutti"
+#    ✅ Pulsante "Solo Necessari"
+#    ✅ Link a Privacy Policy e Cookie Policy
+#    ✅ Descrizione chiara dei cookie usati
+#    ✅ Consenso salvato in localStorage
+#
+#  PROBLEMI RILEVATI:
+#
+#    ❌ PROBLEMA CRITICO — Mancato blocco preventivo
+#       Google Maps (iframe) viene caricato PRIMA del consenso.
+#       Il Garante Privacy richiede il blocco preventivo di tutti
+#       i cookie di terze parti e di profilazione FINO al consenso.
+#       → AZIONE: bloccare l'iframe di Google Maps fino a che
+#         l'utente non clicca "Accetta Tutti".
+#
+#    ❌ PROBLEMA — Pulsante X (chiudi)
+#       La X chiude il banner senza registrare alcuna scelta.
+#       Il Garante richiede che la chiusura equivalga a rifiuto.
+#       → AZIONE: la X deve funzionare come "Solo Necessari"
+#         (decisione confermata: opzione A).
+#
+#    ⚠️ MIGLIORAMENTO — Consenso granulare
+#       Il Provvedimento 2021 richiede la possibilità di
+#       selezionare/deselezionare singole categorie di cookie.
+#       Attualmente ci sono solo "Accetta Tutti" e "Solo Necessari".
+#       Per un sito con solo Google Maps, è accettabile ma non ideale.
+#       → AZIONE CONSIGLIATA: aggiungere un terzo stato
+#         "Personalizza" con toggle per Google Maps.
+#
+#  File: src/components/CookieBanner.tsx
+#
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 4. TRASPARENZA AZIENDALE (Art. 2250 c.c. / DPR 633/72)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+#  STATO: ⚠️ PARZIALMENTE CONFORME — DATO MANCANTE
+#
+#  Elementi presenti nel footer:
+#    ✅ Titolare: Armelloni Andrea
+#    ✅ Sede legale: Via Rotta 10 — 29012 Caorso (PC)
+#    ✅ P.IVA: 01495850339
+#    ✅ Codice Fiscale: RMLNDR74B16F671V
+#    ✅ PEC: armelloniandrea@pec.it
+#
+#  DATI MANCANTI:
+#
+#    ❓ Numero REA (Registro Imprese / Camera di Commercio)
+#       → STATO: Da richiedere al cliente.
+#       → Se il cliente è iscritto alla Camera di Commercio di
+#         Piacenza, il numero REA è obbligatorio per legge.
+#       → Se è ditta individuale artigiana senza iscrizione
+#         al Registro Imprese, non è richiesto.
+#       → AZIONE: verificare con il cliente e, se presente,
+#         aggiungerlo nel footer sotto i dati aziendali.
+#
+#    ❓ Capitale sociale (se applicabile)
+#       → Per le ditte individuali NON è richiesto.
+#       → Rilevante solo se fosse una S.r.l. o S.p.A.
+#
+#  File: src/components/Footer.tsx
+#
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 5. ACCESSIBILITÀ (Legge 4/2004 "Legge Stanca")
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+#  STATO: ⚠️ NON AUDITATO — VERIFICA NECESSARIA
+#
+#  CONTESTO NORMATIVO:
+#    - La Legge Stanca si applica alla PA e ai soggetti che
+#      offrono servizi al pubblico (incluse le aziende private
+#      con fatturato >500M€/anno, dal D.L. 76/2020).
+#    - Per una ditta individuale artigiana come Fabbro Armelloni,
+#      l'obbligo formale NON sussiste.
+#    - TUTTAVIA: l'accessibilità è comunque una best practice
+#      che migliora la SEO e l'usabilità per tutti gli utenti.
+#
+#  ELEMENTI GIÀ PRESENTI (parziale):
+#    ✅ lang="it" su <html>
+#    ✅ aria-label sul pulsante WhatsApp
+#    ✅ aria-expanded sui FAQ accordion
+#    ✅ role="region" sulle risposte FAQ
+#    ✅ Alt text su tutte le immagini della galleria
+#    ✅ Label espliciti su tutti i campi del form
+#    ✅ Navigazione da tastiera (link/bottoni nativi)
+#
+#  AREE DA VERIFICARE:
+#    ⚠️ Contrasto colori (testo grigio su sfondo grigio chiaro)
+#    ⚠️ Focus indicator visibile su tutti gli elementi interattivi
+#    ⚠️ Skip-to-content link (mancante)
+#    ⚠️ Heading hierarchy (da verificare su ogni pagina)
+#    ⚠️ Animazioni rispetto a prefers-reduced-motion
+#
+#  RACCOMANDAZIONE:
+#    Anche se non obbligatoria, una verifica WCAG 2.1 livello AA
+#    è consigliata per:
+#    → Migliorare il punteggio Lighthouse (influisce sulla SEO)
+#    → Evitare problemi legali futuri (la normativa si sta estendendo)
+#    → Includere utenti con disabilità
+#
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# RIEPILOGO AZIONI RICHIESTE
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+#  🔴 CRITICO (obbligatorio per legge):
+#    1. Bloccare iframe Google Maps fino a consenso cookie
+#    2. La X del banner deve equivalere a "Solo Necessari"
+#
+#  🟡 IMPORTANTE (da completare prima della consegna):
+#    3. Aggiornare URL sito in Privacy/Cookie Policy (dominio definitivo)
+#    4. Verificare e inserire numero REA nel footer (se applicabile)
+#
+#  🟢 CONSIGLIATO (miglioramento qualità):
+#    5. Aggiungere opzione "Personalizza" nel cookie banner
+#    6. Audit accessibilità WCAG 2.1 AA
+#    7. Aggiungere skip-to-content link
+#    8. Verificare contrasto colori
+#
+# ============================================================
