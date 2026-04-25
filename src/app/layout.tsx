@@ -8,9 +8,101 @@ import { Phone } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// TODO-CLIENTE: Sostituire con il dominio definitivo
+const BASE_URL = "https://www.fabbroarmelloni.it";
+
 export const metadata: Metadata = {
-  title: "Fabbro Urgente Piacenza | Apertura Porte 24h",
-  description: "Fabbro a Piacenza e provincia. Intervento rapido in 30 minuti. Apertura porte blindate, cambio serrature e riparazioni 24/7.",
+  // Base URL per tutti gli URL relativi nei metadata
+  metadataBase: new URL(BASE_URL),
+
+  title: {
+    default: "Fabbro Urgente Piacenza | Apertura Porte 24h — Armelloni Andrea",
+    template: "%s | Fabbro Armelloni Piacenza",
+  },
+  description:
+    "Fabbro a Piacenza e provincia. Pronto intervento 24/7: apertura porte blindate, sostituzione serrature, carpenteria metallica e lavori in ferro. Arrivo in 30 minuti. Chiama ora!",
+  keywords: [
+    "fabbro piacenza",
+    "fabbro urgente piacenza",
+    "apertura porte blindate piacenza",
+    "cambio serratura piacenza",
+    "pronto intervento fabbro",
+    "fabbro 24 ore piacenza",
+    "serraturiere piacenza",
+    "carpenteria metallica piacenza",
+    "inferriate piacenza",
+    "fabbro caorso",
+    "fabbro provincia piacenza",
+  ],
+  authors: [{ name: "Armelloni Andrea — Opere da Fabbro" }],
+  creator: "Armelloni Andrea",
+
+  // Canonical URL
+  alternates: {
+    canonical: "/",
+  },
+
+  // Open Graph (Facebook, LinkedIn, WhatsApp)
+  openGraph: {
+    type: "website",
+    locale: "it_IT",
+    url: BASE_URL,
+    siteName: "Fabbro Armelloni — Piacenza e Provincia",
+    title: "Fabbro Urgente Piacenza | Apertura Porte 24h",
+    description:
+      "Pronto intervento fabbro a Piacenza e provincia. Apertura porte blindate, serrature, carpenteria. 24/7, arrivo in 30 min.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Fabbro Armelloni — Pronto Intervento Piacenza",
+      },
+    ],
+  },
+
+  // Twitter Card
+  twitter: {
+    card: "summary_large_image",
+    title: "Fabbro Urgente Piacenza | Apertura Porte 24h",
+    description:
+      "Pronto intervento fabbro a Piacenza e provincia. Apertura porte blindate, serrature, carpenteria. 24/7.",
+    images: ["/logo.png"],
+  },
+
+  // Robots globali
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  // Icone
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
+  },
+
+  // TODO-CLIENTE: Inserire il codice di verifica Google Search Console
+  // verification: {
+  //   google: "INSERIRE_CODICE_GOOGLE_SEARCH_CONSOLE",
+  // },
+
+  // Manifest
+  manifest: "/site.webmanifest",
+
+  // Categoria
+  category: "business",
 };
 
 export default function RootLayout({

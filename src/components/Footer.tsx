@@ -53,21 +53,43 @@ export default function Footer() {
             <li>Cambio serrature europeo</li>
             <li>Riparazione tapparelle</li>
             <li>Apertura casseforti</li>
+            <li>Inferriate e grate di sicurezza</li>
+            <li>Cancelli e carpenteria in ferro</li>
+          </ul>
+
+          {/* Link rapidi con SEO internal linking */}
+          <h4 className="text-lg font-bold text-white mt-8 mb-4">Pagine</h4>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link href="/#chi-siamo" className="hover:text-[#FFD700] transition-colors">Chi Siamo</Link>
+            </li>
+            <li>
+              <Link href="/#servizi" className="hover:text-[#FFD700] transition-colors">Servizi</Link>
+            </li>
+            <li>
+              <Link href="/i-nostri-lavori" className="hover:text-[#FFD700] transition-colors">I Nostri Lavori</Link>
+            </li>
+            <li>
+              <Link href="/#contatti" className="hover:text-[#FFD700] transition-colors">Contatti</Link>
+            </li>
+            <li>
+              <Link href="/#faq" className="hover:text-[#FFD700] transition-colors">Domande Frequenti</Link>
+            </li>
           </ul>
         </div>
 
-        {/* Col 3-4 — Zone servite */}
+        {/* Col 3-4 — Zone servite (con link funzionanti!) */}
         <div className="lg:col-span-2">
-          <h4 className="text-lg font-bold text-[#FFD700] mb-4 border-b border-gray-700 pb-2">Zone Servite</h4>
+          <h4 className="text-lg font-bold text-[#FFD700] mb-4 border-b border-gray-700 pb-2">Zone Servite — Provincia di Piacenza</h4>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
             {cities.map((city) => (
-              <a
+              <Link
                 key={city.slug}
-                href={`/`}
+                href={`/${city.fullSlug}`}
                 className="hover:text-[#FFD700] transition-colors"
               >
                 Fabbro {city.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

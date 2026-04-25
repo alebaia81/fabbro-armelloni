@@ -1,0 +1,211 @@
+# ============================================================
+#  FABBRO ARMELLONI — PUNTI SEO DA COMPLETARE DOPO LA CONSEGNA
+# ============================================================
+#
+#  Questo file contiene tutte le azioni che il CLIENTE o il suo
+#  tecnico devono completare dopo l'acquisto del sito per
+#  attivare la massima visibilità su Google.
+#
+#  Priorità: 🔴 = Critico  |  🟡 = Importante  |  🟢 = Consigliato
+#
+# ============================================================
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🔴  1. DOMINIO E HOSTING
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  □  Acquistare un dominio .it (es. fabbroarmelloni.it, fabbrourgentepiacenza.it)
+     → Consiglio: usare un dominio con la keyword "fabbro" + "piacenza" migliora la SEO
+     → Registrar consigliati: Aruba, Register.it, Namecheap
+
+  □  Configurare l'hosting (Vercel è già pronto, oppure Netlify, VPS)
+
+  □  Attivare il certificato SSL (HTTPS obbligatorio per Google)
+     → Su Vercel è automatico
+
+  □  IMPORTANTE: Dopo aver scelto il dominio, fare TROVA E SOSTITUISCI
+     nel codice sorgente cercando:
+     
+        "https://www.fabbroarmelloni.it"
+     
+     E sostituirlo con il dominio definitivo.
+     
+     File coinvolti (cercando "TODO-CLIENTE"):
+       - src/app/layout.tsx         (riga 13 — BASE_URL)
+       - src/app/sitemap.ts         (riga 7 — baseUrl)
+       - src/app/robots.ts          (riga 5 — baseUrl)
+       - src/components/ServicePage.tsx  (schema LocalBusiness e BreadcrumbList)
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🔴  2. GOOGLE SEARCH CONSOLE
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  □  Creare un account Google Search Console:
+     → https://search.google.com/search-console
+
+  □  Verificare la proprietà del dominio (metodo consigliato: record DNS TXT)
+
+  □  Dopo la verifica, recuperare il codice "google-site-verification"
+     e inserirlo nel file:
+       src/app/layout.tsx → decommentare la sezione "verification"
+     
+     Esempio:
+       verification: {
+         google: "IL_TUO_CODICE_QUI",
+       },
+
+  □  Inviare la sitemap a Google Search Console:
+     → URL sitemap: https://tuodominio.it/sitemap.xml
+     → Dashboard → Sitemap → Aggiungi → Inserisci URL → Invia
+
+  □  Richiedere l'indicizzazione delle pagine principali:
+     → Dashboard → Ispeziona URL → Inserisci URL → "Richiedi indicizzazione"
+     → Fare per: homepage, pagina Piacenza, pagina "I nostri lavori"
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🔴  3. GOOGLE BUSINESS PROFILE (ex Google My Business)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠️  QUESTO È IL FATTORE #1 PER IL LOCAL SEO
+  
+  □  Creare o verificare il profilo su:
+     → https://business.google.com
+
+  □  Compilare TUTTI i campi:
+     - Nome attività: "Fabbro Armelloni — Andrea Armelloni"
+     - Categoria primaria: "Fabbro"  
+     - Categorie secondarie: "Serraturiere", "Lavorazione del ferro"
+     - Indirizzo: Via Rotta 10, 29012 Caorso (PC)
+     - Telefono: 347 889 9094
+     - Sito web: https://tuodominio.it (il dominio definitivo)
+     - Orari: 24/7 — Aperto tutti i giorni
+     - Descrizione: copiare la meta description del sito
+     - Area servita: tutta la provincia di Piacenza (elencare tutti i comuni)
+
+  □  Caricare almeno 10 foto di alta qualità:
+     - Foto profilo (logo)
+     - Foto di copertina (lavoro rappresentativo)
+     - Foto dei lavori eseguiti (inferriate, serrature, cancelli, ecc.)
+
+  □  Rispondere a TUTTE le recensioni (positive e negative)
+
+  □  Chiedere recensioni ai clienti soddisfatti:
+     → Ogni recensione Google aumenta la visibilità locale
+     → Obiettivo: almeno 20 recensioni con media 4.5+
+     → Creare un link diretto per le recensioni e condividerlo via WhatsApp
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🟡  4. PROFILI SOCIAL E CITAZIONI LOCALI
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  □  Creare una pagina Facebook aziendale
+     → Inserire indirizzo, telefono, orari, link al sito
+     → Pubblicare regolarmente foto dei lavori
+
+  □  Iscriversi su PagineGialle.it e compilare il profilo completo
+
+  □  Iscriversi su Italiaonline/Virgilio locale
+
+  □  Iscriversi su TuttoCittà
+
+  □  Dopo aver creato i profili social, aggiungere i link nel file:
+       src/components/ServicePage.tsx → schema "sameAs" (cercare "TODO-CLIENTE")
+     
+     Esempio:
+       "sameAs": [
+         "https://www.facebook.com/fabbro.armelloni",
+         "https://www.paginegialle.it/...",
+         "https://business.google.com/..."
+       ]
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🟡  5. IMMAGINE OPEN GRAPH DEDICATA
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  □  Creare un'immagine 1200x630px per la condivisione sui social:
+     → Deve contenere: logo, testo "Fabbro Piacenza 24h", foto lavoro
+     → Salvarla come: public/og-image.jpg (o .png)
+
+  □  Aggiornare i riferimenti nei metadata:
+     → src/app/layout.tsx → openGraph.images → url: "/og-image.jpg"
+     → src/app/page.tsx → openGraph.images → url: "/og-image.jpg"
+     → Attualmente usa /logo.png come fallback
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🟢  6. MONITORAGGIO E MANUTENZIONE
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  □  Collegare Google Analytics 4:
+     → https://analytics.google.com
+     → Creare una proprietà e ottenere il Measurement ID (G-XXXXXXXXXX)
+     → Inserire lo script nel layout.tsx (head)
+
+  □  Verificare lo stato di indicizzazione ogni 2 settimane:
+     → Google Search Console → Copertura → Controllare errori
+
+  □  Monitorare le keyword con uno strumento gratuito:
+     → Ubersuggest (free tier): https://neilpatel.com/ubersuggest/
+     → Google Search Console → Rendimento → Query di ricerca
+
+  □  Aggiornare periodicamente le foto nella galleria "I Nostri Lavori"
+     → Nuovi contenuti = segnale di freschezza per Google
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🟢  7. OTTIMIZZAZIONI FUTURE CONSIGLIATE
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  □  Aggiungere una sezione Blog con articoli tipo:
+     - "Come scegliere la serratura giusta per la tua porta blindata"
+     - "5 consigli per proteggere casa quando sei in vacanza"
+     - "Differenza tra serratura a cilindro europeo e serratura tradizionale"
+     → Gli articoli attirano traffico organico su keyword long-tail
+
+  □  Integrare le recensioni Google direttamente nel sito
+     → Schema AggregateRating per le stelle nei risultati di ricerca
+
+  □  Creare una pagina dedicata per ogni servizio principale:
+     → /apertura-porte-blindate
+     → /sostituzione-serrature
+     → /carpenteria-metallica
+     → Ognuna con contenuto unico e schema Service
+
+  □  Ottimizzare il logo per SVG (attualmente è un PNG da 1.7MB)
+     → Un logo SVG è più leggero, scalabile e migliora il punteggio Lighthouse
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#  RIEPILOGO KEYWORD TARGET
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+#  Keyword primarie (alta competizione):
+#    - fabbro piacenza
+#    - fabbro urgente piacenza
+#    - apertura porte piacenza
+#
+#  Keyword secondarie (media competizione):
+#    - fabbro 24 ore piacenza
+#    - cambio serratura piacenza
+#    - pronto intervento fabbro piacenza
+#    - serraturiere piacenza
+#
+#  Keyword locali (bassa competizione, alto valore):
+#    - fabbro caorso
+#    - fabbro fiorenzuola d'arda
+#    - fabbro castel san giovanni
+#    - fabbro monticelli d'ongina
+#    - fabbro [nome di ogni comune della provincia]
+#
+#  Keyword long-tail (facili da posizionare):
+#    - quanto costa un fabbro a piacenza
+#    - fabbro che apre le porte di notte piacenza
+#    - sostituzione serratura cilindro europeo piacenza
+#    - inferriate in ferro battuto piacenza
+#
+# ============================================================
